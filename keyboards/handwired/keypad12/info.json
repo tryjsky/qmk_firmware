@@ -2,7 +2,7 @@
     "manufacturer": "Y., Ryota",
     "keyboard_name": "handwired/keypad12",
     "maintainer": "tryjsky",
-    "bootloader": "atmel-dfu",
+    "bootloader": "caterina",
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
