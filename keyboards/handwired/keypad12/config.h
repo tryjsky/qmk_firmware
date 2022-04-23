@@ -7,6 +7,8 @@
 
 #define MANUFACTURER "Y., Ryota"
 
+#define USB_MAX_POWER_CONSUMPTION 50
+
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
