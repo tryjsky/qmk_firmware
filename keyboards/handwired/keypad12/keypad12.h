@@ -26,3 +26,6 @@
     { k30, k31,   k32, k33 }, \
     { k40, KC_NO, k41, k42 }  \
 }
+
+void numlock_led_on(void);
+void numlock_led_off(void);
