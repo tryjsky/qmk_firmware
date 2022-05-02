@@ -29,3 +29,5 @@
 #define LED_PIN_ON_STATE 1
 
 #define LED_NUM_LOCK_PIN D4
+
+#define MATRIX_HAS_GHOST
