@@ -98,11 +98,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
      * ┌───┬───┬───┬───┐
-     * │ ^ │ : │ \ │LOW│
+     * │ ¥ │ : │ \ │LOW│
      * ├───┼───┼───┼───┤
-     * │ - │ ; │ / │Sft│
+     * │ ^ │ ; │ / │Sft│
      * ├───┼───┼───┼───┤
-     * │ ¥ │ ] │Nav│Fn │
+     * │ - │ ] │Nav│Fn │
      * ├───┼───┼───┼───┤
      * │ @ │ [ │Cap│   │
      * ├───┼───┼───┤Ctl│
@@ -110,19 +110,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └───┴───┴───┴───┘
      */
     [_RAISEFN] = LAYOUT(
-        KC_EQL,  KC_QUOT,   KC_RO,   LOWER,
-        KC_MINS, KC_SCLN,   KC_SLSH, RAISEFS,
-        KC_JYEN, KC_NUHS,   NAV,     _______,
+        KC_JYEN, KC_QUOT,   KC_RO,   LOWER,
+        KC_EQL,  KC_SCLN,   KC_SLSH, RAISEFS,
+        KC_MINS, KC_NUHS,   NAV,     _______,
         KC_LBRC, KC_RBRC,   KC_CAPS, KC_LCTL,
         KC_ESC,  KC_TAB,    KC_BSPC
     ),
     /*
      * ┌───┬───┬───┬───┐
-     * │ ^ │ : │ \ │LOW│
+     * │ ¥ │ : │ \ │LOW│
      * ├───┼───┼───┼───┤
-     * │ - │ ; │ / │Sft│
+     * │ ^ │ ; │ / │Sft│
      * ├───┼───┼───┼───┤
-     * │ ¥ │ ] │Nav│Fn │
+     * │ - │ ] │Nav│Fn │
      * ├───┼───┼───┼───┤
      * │ @ │ [ │Cap│   │
      * ├───┼───┼───┤Ctl│
@@ -130,9 +130,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └───┴───┴───┴───┘
      */
     [_RAISEFS] = LAYOUT(
-        S(KC_EQL),  S(KC_QUOT), S(KC_RO),   LOWER,
-        S(KC_MINS), S(KC_SCLN), S(KC_SLSH), _______,
-        S(KC_JYEN), S(KC_NUHS), NAV,        RAISEFN,
+        S(KC_JYEN), S(KC_QUOT), S(KC_RO),   LOWER,
+        S(KC_EQL),  S(KC_SCLN), S(KC_SLSH), _______,
+        S(KC_MINS), S(KC_NUHS), NAV,        RAISEFN,
         S(KC_LBRC), S(KC_RBRC), S(KC_CAPS), KC_LCTL,
         S(KC_ESC),  S(KC_TAB),  S(KC_BSPC)
     ),
