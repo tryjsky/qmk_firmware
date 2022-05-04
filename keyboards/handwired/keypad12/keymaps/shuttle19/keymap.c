@@ -26,6 +26,9 @@ enum combos {
     LCTL_FN_LSFT_LOWER_CLEAR_MODS,
     LCTL_FN_RAISE_RSFT_CLEAR_MODS,
     LCTL_RSFT_RAISE_LOWER_CLEAR_MODS,
+    LSFT_LOWER_GRV,
+    RAISE_RSFT_GRV,
+    RAISE_LOWER_GRV,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH;
@@ -33,11 +36,17 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 const uint16_t PROGMEM lctl_fn_lsft_lower_combo[] = {KC_LCTL, RAISEFN, KC_LSFT, LOWER, COMBO_END};
 const uint16_t PROGMEM lctl_fn_raise_rsft_combo[] = {KC_LCTL, LOWERFN, RAISE, KC_RSFT, COMBO_END};
 const uint16_t PROGMEM lctl_rsft_raise_lower_combo[] = {KC_LCTL, KC_RSFT, RAISE, LOWER, COMBO_END};
+const uint16_t PROGMEM lsft_lower_combo[] = {KC_LSFT, LOWER, COMBO_END};
+const uint16_t PROGMEM raise_rsft_combo[] = {RAISE, KC_RSFT, COMBO_END};
+const uint16_t PROGMEM raise_lower_combo[] = {RAISE, LOWER, COMBO_END};
 
 combo_t key_combos[] = {
     [LCTL_FN_LSFT_LOWER_CLEAR_MODS] = COMBO_ACTION(lctl_fn_lsft_lower_combo),
-    [LCTL_FN_RAISE_RSFT_CLEAR_MODS] = COMBO_ACTION(lctl_fn_lsft_lower_combo),
-    [LCTL_RSFT_RAISE_LOWER_CLEAR_MODS] = COMBO_ACTION(lctl_fn_lsft_lower_combo),
+    [LCTL_FN_RAISE_RSFT_CLEAR_MODS] = COMBO_ACTION(lctl_fn_raise_rsft_combo),
+    [LCTL_RSFT_RAISE_LOWER_CLEAR_MODS] = COMBO_ACTION(lctl_rsft_raise_lower_combo),
+    [LSFT_LOWER_GRV] = COMBO(lsft_lower_combo, KC_GRV),
+    [RAISE_RSFT_GRV] = COMBO(raise_rsft_combo, KC_GRV),
+    [RAISE_LOWER_GRV] = COMBO(raise_lower_combo, KC_GRV),
 };
 
 enum custom_keycodes {
@@ -130,43 +139,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
      * ┌───┬───┬───┬───┐
-     * │ 5 │ 0 │Xfr│Sft│
+     * │ 5 │ 0 │K/H│Sft│
      * ├───┼───┼───┼───┤
-     * │ 4 │ 9 │Nfr│RAI│
+     * │ 4 │ 9 │Xfr│RAI│
      * ├───┼───┼───┼───┤
      * │ 3 │ 8 │Nav│Fn │
      * ├───┼───┼───┼───┤
-     * │ 2 │ 7 │Grv│   │
+     * │ 2 │ 7 │Nfr│   │
      * ├───┼───┼───┤Ctl│
      * │ 1 │ 6 │Bs │   │
      * └───┴───┴───┴───┘
      */
     [_LOWERFN] = LAYOUT(
-        KC_5,    KC_0,    KC_HENK, LOWERFS,
-        KC_4,    KC_9,    KC_MHEN, RAISE,
+        KC_5,    KC_0,    KC_KANA, LOWERFS,
+        KC_4,    KC_9,    KC_HENK, RAISE,
         KC_3,    KC_8,    NAV,     _______,
-        KC_2,    KC_7,    KC_GRV,  KC_LCTL,
+        KC_2,    KC_7,    KC_MHEN,  KC_LCTL,
         KC_1,    KC_6,    KC_BSPC 
     ),
 
     /*
      * ┌───┬───┬───┬───┐
-     * │ 5 │ 0 │Xfr│Sft│
+     * │ 5 │ 0 │K/H│Sft│
      * ├───┼───┼───┼───┤
-     * │ 4 │ 9 │Nfr│RAI│
+     * │ 4 │ 9 │Xfr│RAI│
      * ├───┼───┼───┼───┤
      * │ 3 │ 8 │Nav│Fn │
      * ├───┼───┼───┼───┤
-     * │ 2 │ 7 │Grv│   │
+     * │ 2 │ 7 │Nfr│   │
      * ├───┼───┼───┤Ctl│
      * │ 1 │ 6 │Bs │   │
      * └───┴───┴───┴───┘
      */
     [_LOWERFS] = LAYOUT(
-        S(KC_5), S(KC_0), S(KC_HENK), _______,
-        S(KC_4), S(KC_9), S(KC_MHEN), RAISE,
+        S(KC_5), S(KC_0), S(KC_KANA), _______,
+        S(KC_4), S(KC_9), S(KC_HENK), RAISE,
         S(KC_3), S(KC_8), NAV,        LOWERFN,
-        S(KC_2), S(KC_7), S(KC_GRV),  KC_LCTL,
+        S(KC_2), S(KC_7), S(KC_MHEN),  KC_LCTL,
         S(KC_1), S(KC_6), S(KC_BSPC) 
     ),
 
