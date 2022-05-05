@@ -243,6 +243,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+bool host_num_lock_led_enable = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static int fn_pressed = 0;
 
@@ -294,7 +296,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case KC_P8:
             case KC_P9:
             case KC_PDOT:
-                if (!host_keyboard_led_state().num_lock) {
+                if (host_num_lock_led_enable &&
+                    !host_keyboard_led_state().num_lock) {
                     tap_code(KC_NUM);
                     tap_code(keycode);
                     tap_code(KC_NUM);
@@ -303,7 +306,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
 
             case KC_P000:
-                if (!host_keyboard_led_state().num_lock) {
+                if (host_num_lock_led_enable &&
+                    !host_keyboard_led_state().num_lock) {
                     tap_code(KC_NUM);
                     tap_code(KC_P0);
                     tap_code(KC_P0);
@@ -356,10 +360,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case _NUMPAD:
+            // Press NumLock and look at NumLock LED state changed.
+            host_num_lock_led_enable = false;
+            tap_code(KC_NUM);
+            tap_code(KC_NUM);
+
             numlock_led_on();
             break;
 
         default:
+            host_num_lock_led_enable = false;
             numlock_led_off();
     }
     return state;
@@ -367,6 +377,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool led_update_user(led_t led_state) {
     // Control Numlock LED manually
+    if (led_state.num_lock) {
+        host_num_lock_led_enable = true;
+    }
     return false;
 }
 
